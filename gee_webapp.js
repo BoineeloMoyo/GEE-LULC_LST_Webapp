@@ -168,3 +168,14 @@ c.lulc_legend.title = ui.Label('Classification Legend');
 c.lulc_legend.panel = ui.Panel([
   c.lulc_legend.title,
 ]);
+
+/*******************************************************************************
+ * Composition *
+ *
+ * A section to compose the app i.e. add child widgets and widget groups to
+ * first-level parent components like control panels and maps.
+ *
+ * Guidelines: There is a gradient between components and composition. There
+ * are no hard guidelines here; use this section to help conceptually break up
+ * the composition of complicated apps with many widgets and widget groups.
+ ******************************************************************************/
