@@ -19,7 +19,7 @@ var lst10: Image users/Boineelo_Moye/LST2010
 var lst15: Image users/Boineelo_Moye/LST2015
 var lst20: Image users/Boineelo_Moye/LST2020
  ******************************************************************************/
- 
+Map.centerObject(studyarea, 12);
 // Define a JSON object for storing the data model.
 var m = {};
 
