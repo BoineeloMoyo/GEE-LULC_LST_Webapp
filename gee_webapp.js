@@ -179,3 +179,52 @@ c.lulc_legend.panel = ui.Panel([
  * are no hard guidelines here; use this section to help conceptually break up
  * the composition of complicated apps with many widgets and widget groups.
  ******************************************************************************/
+
+c.controlPanel.add(c.info.panel);
+c.controlPanel.add(c.dividers.divider1);
+c.controlPanel.add(c.selectYear.panel);
+c.controlPanel.add(c.dividers.divider2);
+c.controlPanel.add(c.charts.panel);
+
+c.lulc_map.add(c.lulc_legend.panel);
+c.lst_map.add(c.lst_legend.panel);
+
+//Create and style 1 row of the legend.
+var makeRow = function(color, name) {
+ 
+      var colorBox = ui.Label({
+        style: {
+          backgroundColor: color,
+          padding: '8px',
+          margin: '0 0 4px 4px'
+        } 
+      });
+      
+      var description = ui.Label({
+        value: name,
+        style: {margin: '0 0 4px 6px'}
+      });
+ 
+      return ui.Panel({
+        widgets: [colorBox, description],
+        layout: ui.Panel.Layout.Flow('horizontal')
+      });
+};
+
+//Add color and names
+// Loop through setting LULC class items.
+for (var i in m.datasets.lulc.classNames) {
+  c.lulc_legend.panel.add(makeRow(m.datasets.lulc.vis.palette[i], m.datasets.lulc.classNames[i]));
+} 
+
+// Create a SplitPanel which holds the linked maps side-by-side.
+c.splitMapPanel = ui.SplitPanel({
+  firstPanel: c.linker.get(1),
+  secondPanel: c.linker.get(0),
+  orientation: 'horizontal',
+  wipe: true,
+});
+
+ui.root.clear();
+ui.root.add(c.splitMapPanel);
+ui.root.add(c.controlPanel);
