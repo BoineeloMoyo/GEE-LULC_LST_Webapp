@@ -228,3 +228,16 @@ c.splitMapPanel = ui.SplitPanel({
 ui.root.clear();
 ui.root.add(c.splitMapPanel);
 ui.root.add(c.controlPanel);
+/*******************************************************************************
+ * Styling *
+ *
+ * A section to define and set widget style properties.
+ *
+ * Guidelines:
+ * 1. At the top, define styles for widget "classes" i.e. styles that might be
+ *    applied to several widgets, like text styles or margin styles.
+ * 2. Set "inline" style properties for single-use styles.
+ * 3. You can add multiple styles to widgets, add "inline" style followed by
+ *    "class" styles. If multiple styles need to be set on the same widget, do
+ *    it consecutively to maintain order.
+ ******************************************************************************/
