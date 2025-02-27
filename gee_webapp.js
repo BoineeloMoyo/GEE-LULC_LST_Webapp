@@ -374,4 +374,16 @@ s.authorText = {
   Object.keys(c.dividers).forEach(function(key) {
     c.dividers[key].style().set(s.divider);
   });
-  
+  /*******************************************************************************
+ * Behaviors *
+ *
+ * A section to define app behavior on UI activity.
+ *
+ * Guidelines:
+ * 1. At the top, define helper functions and functions that will be used as
+ *    callbacks for multiple events.
+ * 2. For single-use callbacks, define them just prior to assignment. If
+ *    multiple callbacks are required for a widget, add them consecutively to
+ *    maintain order; single-use followed by multi-use.
+ * 3. As much as possible, include callbacks that update URL parameters.
+ ******************************************************************************/
