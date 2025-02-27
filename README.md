@@ -1,2 +1,3 @@
-# GEE-LULC_LST_Webapp
+# Continuous Monitoring Web App
+One of the advantageous features of GEE is the ability to publish results in an interactive development environment (IDE). I leveraged this feature by developing a web application that allows for prototyping and fast visualization of the LULC vs LST findings. The web application serves as a continuous monitoring tool for LULC and LST change patterns in Gaborone. Users can interactively visualize land cover transformations and how they influence LST, as well as track the urban growth trend and vegetation decline over time. The web application can be accessed through this link:   CLICK-HERE   : 
 An interactive earth engine web app that visualises and monitors the impacts of urbanisation on land surface temperature
