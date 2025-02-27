@@ -81,3 +81,41 @@ m.years = ['2005', '2010', '2015', '2020'];
  ******************************************************************************/
 
 // Define a JSON object for storing UI components.
+ar c = {};
+
+// Define a control panel for user input.
+c.controlPanel = ui.Panel();
+
+// Define a series of panel widgets to be used as horizontal dividers.
+c.dividers = {};
+c.dividers.divider1 = ui.Panel();
+c.dividers.divider2 = ui.Panel();
+
+
+// Define 2 maps.
+c.lulc_map = ui.Map();
+c.lst_map = ui.Map();
+
+// Link 2 maps to eachother.
+c.linker = ui.Map.Linker([c.lulc_map, c.lst_map]);
+
+// Define an app info widget group.
+c.info = {};
+c.info.titleLabel = ui.Label(
+  'Spatio-Temporal Assessment of the impacts of LULC change on LST Variations in Gaborone'
+  );
+  
+// Add subtitle label
+c.info.subtitleLabel = ui.Label(
+  'Discover the Changing Landscape of Gaborone ',
+  {fontWeight: 'bold', fontSize: '16px'}
+);
+
+c.info.aboutLabel = ui.Label(
+  'This app visualises the relationship between land use land cover (LULC) and Land Surface Temperature (LST) from 2005 to 2020, leveraging the Random Forest ML algorithm to achieve the results. \n' + 
+  'The web application serves as a continuous monitoring, and spatio-temporal analysis tool for LULC and LST change patterns in Gaborone.\n' + 
+  'Use the interactive swipping tool on the far left to explore and compare trends and changes in LULC and surface temperature shaped by urbanisation. \n' +
+  'Perfect for researchers, planners, and anyone interested in the impacts of urban growth on local ecosystems. ',
+  {whiteSpace: 'pre-wrap'}
+  );
+  
