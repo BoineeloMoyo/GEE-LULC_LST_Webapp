@@ -9,7 +9,7 @@
  ******************************************************************************/
 /* Define variables :- that is your classified images, study_area/aoi etc
 
-
+var studyarea: Table users/Boineelo_Moyo/StudyArea
 
 
 */
