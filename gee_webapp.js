@@ -68,4 +68,16 @@ m.datasets = {
 };
 
 m.years = ['2005', '2010', '2015', '2020'];
+/*******************************************************************************
+ * Components *
+ *
+ * A section to define the widgets that will compose your app.
+ *
+ * Guidelines:
+ * 1. Except for static text and constraints, accept default values;
+ *    initialize others in the initialization section.
+ * 2. Limit composition of widgets to those belonging to an inseparable unit
+ *    (i.e. a group of widgets that would make no sense out of order).
+ ******************************************************************************/
 
+// Define a JSON object for storing UI components.
