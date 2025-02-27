@@ -256,3 +256,122 @@ s.aboutText = {
   fontSize: '15px', 
   textAlign: "justify"
 };
+
+s.authorText = {
+    fontSize: '11px', 
+    fontWeight: 'bold',
+    textAlign: "justify",
+    margin: '8px 8px 0px 8px',
+  };
+  
+  
+  s.widgetTitle = {
+    fontSize: '15px',
+    fontWeight: 'bold',
+    margin: '8px 8px 0px 8px',
+    color: '383838',
+  };
+  
+  s.divider = {
+    backgroundColor: 'green',
+    height: '2px',
+    margin: '20px 0px'
+  };
+  
+  s.stretchHorizontal = {
+    stretch: 'horizontal'
+  };
+  
+  // Set widget style.
+  c.info.titleLabel.style().set(s.titleText);
+  c.info.aboutLabel.style().set(s.aboutText);
+  c.info.authorLabel.style().set(s.authorText);
+  
+  
+  c.selectYear.selector.style().set(s.stretchHorizontal);
+  c.selectYear.label.style().set(s.widgetTitle);
+  
+  
+  c.controlPanel.style().set({
+    width: '400px',
+    padding: '0px',
+  });
+  
+  c.lulc_map.style().set({
+    cursor: 'crosshair'
+  });
+  
+  c.lst_map.style().set({
+    cursor: 'crosshair'
+  });
+  
+  c.splitMapPanel.style().set({
+    stretch: 'both' 
+  });
+  
+  // LST legend style
+  c.lst_legend.title.style().set({
+    fontWeight: 'bold',
+    fontSize: '12px',
+    color: '383838'
+  });
+  
+  c.lst_legend.colorbar.style().set({
+    stretch: 'horizontal',
+    margin: '0px 8px',
+    maxHeight: '20px'
+  });
+  
+  c.lst_legend.colorbar.setParams({
+      bbox: [0, 0, 1, 0.1],
+      dimensions: '100x10',
+      format: 'png',
+      min: 0,
+      max: 1,
+      palette: m.datasets.lst.vis.palette
+  });
+  
+  c.lst_legend.leftLabel.setValue(m.datasets.lst.vis.min_constant);
+  c.lst_legend.rightLabel.setValue(m.datasets.lst.vis.max_constant);
+  c.lst_legend.centerLabel.setValue((m.datasets.lst.vis.max_constant + m.datasets.lst.vis.min_constant) / 2);
+  
+  c.lst_legend.leftLabel.style().set({
+    margin: '4px 8px',
+    fontSize: '12px'
+  });
+  
+  c.lst_legend.centerLabel.style().set({
+    margin: '4px 8px',
+    fontSize: '12px',
+    textAlign: 'center',
+    stretch: 'horizontal'
+  });
+  
+  c.lst_legend.rightLabel.style().set({
+    margin: '4px 8px',
+    fontSize: '12px'
+  });
+  
+  c.lst_legend.panel.style().set({
+    position: 'bottom-left',
+    width: '200px',
+    padding: '0px'});
+  
+
+  // LULC legend style
+  c.lulc_legend.title.style().set({
+    fontWeight: 'bold',
+    fontSize: '12px',
+    color: '383838'
+  });
+  
+  c.lulc_legend.panel.style().set({
+    position: 'bottom-right',
+    width: '200px',
+    padding: '0px'});
+    
+  // Loop through setting divider style.
+  Object.keys(c.dividers).forEach(function(key) {
+    c.dividers[key].style().set(s.divider);
+  });
+  
