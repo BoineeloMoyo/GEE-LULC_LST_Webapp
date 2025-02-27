@@ -16,8 +16,7 @@ var classfied_15: Image users/Boineelo_Moye/classified2015
 var classfied_20: Image users/Boineelo_Moye/classified2020
 var lst05: Image users/Boineelo_Moye/LST2005
 var lst10: Image users/Boineelo_Moye/LST2010
-var lst10: Image users/Boineelo_Moye/LST2010
-var lst10: Image users/Boineelo_Moye/LST2010
-
+var lst15: Image users/Boineelo_Moye/LST2015
+var lst20: Image users/Boineelo_Moye/LST2020
 
 */
