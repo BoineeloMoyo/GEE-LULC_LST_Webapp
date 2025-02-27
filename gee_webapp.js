@@ -241,3 +241,18 @@ ui.root.add(c.controlPanel);
  *    "class" styles. If multiple styles need to be set on the same widget, do
  *    it consecutively to maintain order.
  ******************************************************************************/
+
+// Define a JSON object for defining CSS-like class style properties.
+var s = {};
+
+s.titleText = {
+  fontSize: '20px', 
+  fontWeight: 'bold', 
+  color: 'green', 
+  textAlign: "center"
+};
+
+s.aboutText = {
+  fontSize: '15px', 
+  textAlign: "justify"
+};
