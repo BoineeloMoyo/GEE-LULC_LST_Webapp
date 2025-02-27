@@ -81,7 +81,7 @@ m.years = ['2005', '2010', '2015', '2020'];
  ******************************************************************************/
 
 // Define a JSON object for storing UI components.
-ar c = {};
+var c = {};
 
 // Define a control panel for user input.
 c.controlPanel = ui.Panel();
@@ -119,3 +119,52 @@ c.info.aboutLabel = ui.Label(
   {whiteSpace: 'pre-wrap'}
   );
   
+c.info.authorLabel = ui.Label('(Moyo Boineelo, MSc. Photogrammetry and Geoinformatics)')
+
+c.info.panel = ui.Panel([
+  c.info.titleLabel, 
+  c.info.subtitleLabel,
+  c.info.aboutLabel, 
+  c.info.authorLabel
+]);
+
+// Define a data year selector widget group.
+c.selectYear = {};
+c.selectYear.label = ui.Label('Select a year to display');
+c.selectYear.selector = ui.Select(m.years);
+c.selectYear.panel = ui.Panel([c.selectYear.label, c.selectYear.selector]);
+
+// Define chart widget group
+c.charts = {};
+c.charts.trendChartContainer = ui.Panel();  // will hold the dynamically generated chart.
+c.charts.lulcChartContainer = ui.Panel();  // will hold the dynamically generated chart.
+c.charts.panel = ui.Panel([c.charts.lulcChartContainer, c.charts.trendChartContainer]);
+
+
+// Define a LST legend widget group.
+c.lst_legend = {};
+c.lst_legend.title = ui.Label('Temperature (°C) in Gaborone');
+c.lst_legend.colorbar = ui.Thumbnail(ee.Image.pixelLonLat().select(0));
+c.lst_legend.leftLabel = ui.Label('[min]');
+c.lst_legend.centerLabel = ui.Label();
+c.lst_legend.rightLabel = ui.Label('[max]');
+c.lst_legend.labelPanel = ui.Panel({
+  widgets: [
+    c.lst_legend.leftLabel,
+    c.lst_legend.centerLabel,
+    c.lst_legend.rightLabel,
+  ],
+  layout: ui.Panel.Layout.flow('horizontal')
+});
+c.lst_legend.panel = ui.Panel([
+  c.lst_legend.title,
+  c.lst_legend.colorbar,
+  c.lst_legend.labelPanel
+]);
+
+// Define a LULC legend widget group.
+c.lulc_legend = {};
+c.lulc_legend.title = ui.Label('Classification Legend');
+c.lulc_legend.panel = ui.Panel([
+  c.lulc_legend.title,
+]);
