@@ -443,16 +443,6 @@ function updateLULCMap() {
         .copyProperties(img, ['system:time_start']);
     });
     
-/*******************************************************************************
- * Initialize *
- * 
- * A section to initialize the app state on load.
- *
- * Guidelines:
- * 1. At the top, define any helper functions.
- * 2. As much as possible, use URL params to initial the state of the app.
- ******************************************************************************/
- 
     
     // Chart time series of LST for Gaborone in 2015.
     var trendChart = ui.Chart.image.series({
@@ -497,3 +487,13 @@ function updateLULCMap() {
   // c.selectYear.selector.onChange(updateLSTLegend);
   c.selectYear.selector.onChange(drawLULCChart);
   
+  /*******************************************************************************
+   * Initialize *
+   * 
+   * A section to initialize the app state on load.
+   *
+   * Guidelines:
+   * 1. At the top, define any helper functions.
+   * 2. As much as possible, use URL params to initial the state of the app.
+   ******************************************************************************/
+   
