@@ -18,5 +18,4 @@ var lst05: Image users/Boineelo_Moye/LST2005
 var lst10: Image users/Boineelo_Moye/LST2010
 var lst15: Image users/Boineelo_Moye/LST2015
 var lst20: Image users/Boineelo_Moye/LST2020
-
-*/
+ ******************************************************************************/
