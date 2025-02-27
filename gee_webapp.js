@@ -387,3 +387,103 @@ s.authorText = {
  *    maintain order; single-use followed by multi-use.
  * 3. As much as possible, include callbacks that update URL parameters.
  ******************************************************************************/
+
+// Handles year and band selection for new map layer display.
+function updateLULCMap() {
+    var year = c.selectYear.selector.getValue();
+    
+    var studyarea = m.datasets.aoi.coll;
+    var lulc_img = m.datasets.lulc.coll.filter(ee.Filter.eq('year', parseInt(year, 10))).first().clip(studyarea);
+    var lulc_layer = ui.Map.Layer(lulc_img, m.datasets.lulc.vis, 'LULC ' + year);
+  
+    c.lulc_map.layers().set(1, lulc_layer);
+  }
+  
+  function updateLSTMap() {
+    
+    var year = c.selectYear.selector.getValue();
+    var min_vis = m.datasets.lst.vis['min' + year];
+    var max_vis = m.datasets.lst.vis['max' + year];
+    var palette = m.datasets.lst.vis.palette;
+    
+    var lst_img = m.datasets.lst.coll.filter(ee.Filter.eq('year', parseInt(year, 10)));
+    var lst_layer = ui.Map.Layer(lst_img, {min: min_vis, max: max_vis, palette: palette}, 'LST ' + year);
+  
+    c.lst_map.layers().set(1, lst_layer);
+  }
+  
+  function updateLinkedMaps() {
+    updateLULCMap();
+    updateLSTMap();
+  }
+  
+  // // Handles drawing the legend when band selector changes.
+  // function updateLSTLegend(year) {
+    
+  //   var min_vis = m.datasets.lst.vis['min' + year];
+  //   var max_vis = m.datasets.lst.vis['max' + year];
+  //   var mean_vis = (min_vis + max_vis) / 2;
+    
+  //   c.lst_legend.leftLabel.setValue(min_vis);
+  //   c.lst_legend.centerLabel.setValue(mean_vis);
+  //   c.lst_legend.rightLabel.setValue(max_vis);
+  // }
+  
+  function drawTrendChart() {
+    // Filter the LST collection to include only images intersecting the desired date range.
+    var modis = m.datasets.lst_daily.coll;
+    var mod11a2 = modis.filterDate(m.datasets.lst_daily.startDate, m.datasets.lst_daily.endDate);
+    var modLSTday = mod11a2.select(m.datasets.lst_daily.band);
+    
+    // Scale to Kelvin and convert to Celsius, set image acquisition time.
+    var modLSTc = modLSTday.map(function(img) {
+      return img
+        .multiply(0.02)
+        .subtract(273.15)
+        .copyProperties(img, ['system:time_start']);
+    });
+    
+    
+    // Chart time series of LST for Gaborone in 2015.
+    var trendChart = ui.Chart.image.series({
+      imageCollection: modLSTc,
+      region: m.datasets.aoi.coll,
+      reducer: ee.Reducer.mean(), 
+      scale: 1000,
+      xProperty: 'system:time_start'})
+      .setOptions({
+        lineWidth: 1,
+        pointSize: 2,
+        trendlines: {0: { 
+            color: 'CC0000'
+        }},
+        legend: {position: 'none'},
+         title: 'Gaborone LST Time Series (2005 - 2020)',
+         hAxis: {title: ' Years'},
+         vAxis: {title: 'LST Celsius'}});
+    c.charts.trendChartContainer.widgets().reset([trendChart]);
+  }
+  
+  function drawLULCChart(year) {
+    var lulc_img = m.datasets.lulc.coll.filter(ee.Filter.eq('year', parseInt(year, 10))).first();
+    
+    var chart = ui.Chart.image.byClass({
+      image: ee.Image.pixelArea().divide(1e6).rename('area').addBands(lulc_img), 
+      classBand: 'b1', 
+      region: m.datasets.aoi.coll, 
+      reducer: ee.Reducer.sum(), 
+      scale: m.datasets.lulc.coll.first().projection().nominalScale(), 
+      classLabels: [''].concat(m.datasets.lulc.classNames),
+    }).setOptions({
+        title: 'Class distribution for year ' + year,
+        colors: m.datasets.lulc.vis.palette,
+        hAxis: {title: 'LULC Classes'},
+        vAxis: {title: 'Area Km^2'},
+        });
+    c.charts.lulcChartContainer.widgets().reset([chart]);
+  }
+  
+  c.selectYear.selector.onChange(updateLinkedMaps);
+  // c.selectYear.selector.onChange(updateLSTLegend);
+  c.selectYear.selector.onChange(drawLULCChart);
+  
