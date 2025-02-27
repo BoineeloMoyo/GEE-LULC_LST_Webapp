@@ -10,6 +10,15 @@
 /* Define variables :- that is your classified images, study_area/aoi etc
 
 var studyarea: Table users/Boineelo_Moyo/StudyArea
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
+var classfied_05: Image users/Boineelo_Moye/classified2005
 
 
 */
