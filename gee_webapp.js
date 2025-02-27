@@ -497,3 +497,23 @@ function updateLULCMap() {
    * 2. As much as possible, use URL params to initial the state of the app.
    ******************************************************************************/
    
+function addStudyAreaAndCenter() {
+    var studyarea = m.datasets.aoi.coll;
+    var studyarea_layer_lulc = ui.Map.Layer(studyarea, {}, 'Study Area');
+    var studyarea_layer_lst = ui.Map.Layer(studyarea, {}, 'Study Area');
+    
+    c.lulc_map.layers().set(0, studyarea_layer_lulc);
+    c.lst_map.layers().set(0, studyarea_layer_lst);
+    
+    // c.lulc_map.centerObject(studyarea, 12);
+    c.lulc_map.setCenter(m.datasets.aoi.lon, m.datasets.aoi.lat, m.datasets.aoi.zoom);
+  }
+  
+  c.selectYear.selector.setValue(m.years[0]);
+  
+  // Render the map, legend and AOI
+  addStudyAreaAndCenter();
+  drawTrendChart();
+  updateLinkedMaps();
+  
+  
