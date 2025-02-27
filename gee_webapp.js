@@ -14,11 +14,10 @@ var classfied_05: Image users/Boineelo_Moye/classified2005
 var classfied_10: Image users/Boineelo_Moye/classified2010
 var classfied_15: Image users/Boineelo_Moye/classified2015
 var classfied_20: Image users/Boineelo_Moye/classified2020
-var lst_05: Image users/Boineelo_Moye/LST2005
-var lst_10: Image users/Boineelo_Moye/LST2010
-var classfied_05: Image users/Boineelo_Moye/classified2005
-var classfied_05: Image users/Boineelo_Moye/classified2005
-var classfied_05: Image users/Boineelo_Moye/classified2005
+var lst05: Image users/Boineelo_Moye/LST2005
+var lst10: Image users/Boineelo_Moye/LST2010
+var lst10: Image users/Boineelo_Moye/LST2010
+var lst10: Image users/Boineelo_Moye/LST2010
 
 
 */
